@@ -1,4 +1,4 @@
-package com.example.demo1.products;
+package com.example.demo1.model;
 
 public class Product {
     private String name, type;
@@ -13,10 +13,23 @@ public class Product {
         this.type = type;
     }
 
+    //kopia do koszyka
+    public Product(Product product){
+        this.id = product.id;
+        this.amount = 1;
+        this.price = product.price;
+        this.name = product.name;
+        this.type = product.type;
+    }
+
     @Override
     public String toString() {
         return "id - " + id + " | nazwa - " + name +
                 " | " + price + "zł | ilość - " + amount + '}';
+    }
+
+    public void addAmount(){
+        this.amount++;
     }
 
     public String getName() {
