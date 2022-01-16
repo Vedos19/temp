@@ -14,18 +14,15 @@ public class ShopController {
     private final ProductService productService;
 
     @Autowired
-    public ShopController(ProductService productService) { this.productService = productService; }
-
-    @GetMapping("/cart")
-    public String getCart(Model model) {
-        model.addAttribute("cart_products", this.productService.getBasketItems());
-        return "cart_products";
+    public ShopController(ProductService productService) {
+        this.productService = productService;
     }
 
-    @RequestMapping(value = "/cart/add/{productId}")
-    public String addProduct(@PathVariable Integer productId) {
-        productService.addProductToCart(productId);
-        return "main";
+    @GetMapping("/basket")
+    public String getBasket(Model model) {
+        model.addAttribute("sum_price", this.productService.sumPrice());
+        model.addAttribute("basket_products", this.productService.getBasketItems());
+        return "basket_products";
     }
 
     @GetMapping("/product-list")
@@ -33,5 +30,17 @@ public class ShopController {
         //wypisanie produktow w stringu na stronie
         model.addAttribute("products", this.productService.getProducts());
         return "products";
+    }
+
+    @RequestMapping(value = "/basket/add/{productId}")
+    public String addProduct(@PathVariable Integer productId) {
+        productService.addProductToBasket(productId);
+        return "main";
+    }
+
+    @RequestMapping(value = "/basket/sum")
+    public String sumPrice(Model model){
+        model.addAttribute("sum_price", this.productService.sumPrice());
+        return "sum";
     }
 }

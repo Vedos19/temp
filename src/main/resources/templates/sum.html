@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/%22%3E>
+<head>
+    <meta charset=UTF-8">
+<title>Title</title>
+</head>
+
+<body>
+<a th:href="@{/shop/basket}">Return</a>
+<br>
+<p th:text=" 'Total price: ' + ${sum_price} + zł" />
+
+<div><img src='https://developers.przelewy24.pl/img/eng/ENG_WHITE_LABEL_1_14.png'></div>
+</body>
+</html>

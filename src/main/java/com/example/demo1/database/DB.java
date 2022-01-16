@@ -40,7 +40,7 @@ public class DB {
         return null;
     }
 
-    public void addProductToCart(int productId) {
+    public void addProductToBasket(int productId) {
         Product product = getProductById(productId);
         System.out.println(product);
 

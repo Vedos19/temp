@@ -4,17 +4,22 @@
     <meta charset=UTF-8">
     <title>Title</title>
 </head>
+    <style>
+    body{
+        background-color: #ccffcc
+    }
+</style>
 <body>
+    <a th:href="@{/shop/basket}">Basket</a>
+    <br><br>
+
     <tr th:each="products: ${products}">
-        <td th:text="${products.id}+." />
         <td th:text="${products.name}" />
         <td th:text="${products.price}+zł" />
         <td th:text=" '(' + ${products.amount} +')' " />
-        <a th:href="@{/shop/cart/add/{id}(id=${products.id})}">Add to cart</a>
+        <a th:href="@{/shop/basket/add/{id}(id=${products.id})}">Add to basket</a>
         <br>
     </tr>
-
-    <a th:href="@{/shop/cart}">Basket</a>
 </div>
 </body>
 </html>

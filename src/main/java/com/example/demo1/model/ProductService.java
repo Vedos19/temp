@@ -19,7 +19,11 @@ public class ProductService {
         return db.getBasket().getBasketProducts();
     }
 
-    public void addProductToCart(int productId) {
-        db.addProductToCart(productId);
+    public void addProductToBasket(int productId) {
+        db.addProductToBasket(productId);
+    }
+
+    public double sumPrice(){
+        return db.getBasket().sumPrice();
     }
 }
