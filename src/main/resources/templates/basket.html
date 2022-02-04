@@ -10,14 +10,14 @@
     }
 </style>
 <body>
-<a th:href="@{/shop/product-list}">Products</a>
+<a th:href="@{/shop/products}">Products</a>
 <br>
-<a th:if="${basket_products.size() > 0}"th:href="@{/shop/basket/sum}">Pay</a>
+<a th:if="${basket.size() > 0}"th:href="@{/shop/basket/sum}">Pay</a>
 <br><br>
     <tr th:each="basket_product: ${basket_products}">
-        <td th:text="${basket_product.name}" />
-        <td th:text="${basket_product.price}+zł" />
-        <td th:text=" '(' + ${basket_product.amount} +')' " />
+        <td th:text="${basket.name}" />
+        <td th:text="${basket.price}+zł" />
+        <td th:text=" '(' + ${basket.quantity} +')' " />
         <br>
     </tr>
 <br>

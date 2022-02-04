@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sklep z żółwiami</title>
+    <link rel="stylesheet" href="main.css">
 </head>
-<style>
-    body{
-        background-color: #ccffcc
-    }
-</style>
+
 <body>
-<a href="/shop/product-list" class="btn btn-secondary" > Product List</a>
-<a href="/shop/basket" class="btn btn-secondary" >Open Basket</a>
-<br>
-<br>
+    <div id="menu">
+        <a href="@{/shop/products}" class="btn btn-secondary" >Lista produktów</a>
+        <a href="@{/shop/basket}" class="btn btn-secondary" >Koszyk</a>
+    </div>
 </body>
 </html>

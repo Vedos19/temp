@@ -1,13 +1,13 @@
 package com.example.demo1.model;
 
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Basket {
 
     private final List<Product> basket_products = new ArrayList<>();
+
+    private List<OrderPosition> orderPositions = new ArrayList<>();
 
     public List<Product> getBasketProducts() {
         return basket_products;
@@ -35,7 +35,7 @@ public class Basket {
                             .equals(product.getName()))
                     .findFirst()
                     .get();
-            product2.addAmount();
+            product2.addQuantity();
         }
     }
 
@@ -43,9 +43,25 @@ public class Basket {
         double sum = 0;
 
         for(int i = 0; i<basket_products.size(); i++){
-            sum += basket_products.get(i).getAmount() * basket_products.get(i).getPrice();
+            sum += basket_products.get(i).getQuantity() * basket_products.get(i).getPrice();
         }
         System.out.println("Do zapłaty: " + sum + "zł");
         return sum;
+    }
+
+    public List<OrderPosition> getOrderPositions() {
+        return orderPositions;
+    }
+
+    public double getSum() {
+        double sum = 0.0;
+        for(OrderPosition orderPosition : this.orderPositions) {
+            sum += orderPosition.getQuantity() * orderPosition.getProduct().getPrice();
+        }
+        return Math.round(sum*100)/100.0;
+    }
+
+    public void clearOrderPositions() {
+        this.orderPositions = new ArrayList<>();
     }
 }

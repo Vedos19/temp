@@ -3,23 +3,24 @@
 <head>
     <meta charset=UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="products.css">
 </head>
-    <style>
+<style>
     body{
         background-color: #ccffcc
     }
 </style>
 <body>
-    <a th:href="@{/shop/basket}">Basket</a>
-    <br><br>
-
-    <tr th:each="products: ${products}">
-        <td th:text="${products.name}" />
-        <td th:text="${products.price}+zł" />
-        <td th:text=" '(' + ${products.amount} +')' " />
-        <a th:href="@{/shop/basket/add/{id}(id=${products.id})}">Add to basket</a>
-        <br>
-    </tr>
-</div>
+    <a th:href="@{/shop/basket}">Koszyk</a>
+    <br>
+    <div id="content">
+        <div th:id="${product.id}" th:each="product : ${getproducts}" class="product">
+            <br>
+            <div th:text="${product.id}" class="name"></div>
+            <div th:text=" 'Cena: ' + ${product.price}+zł" class="price"></div>
+            <div th:text=" 'Ilość: ' + ${product.quantity}" class="quantity"></div>
+            <a th:href="@{basket/add/{id}(id=${product.id})}">Dodaj do koszyka</a>
+        </div>
+    </div>
 </body>
 </html>

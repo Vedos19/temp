@@ -1,6 +1,6 @@
 package com.example.demo1.controllers;
 
-import com.example.demo1.model.ProductService;
+import com.example.demo1.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,22 +18,28 @@ public class ShopController {
         this.productService = productService;
     }
 
+    @GetMapping("/main")
+    public String getMain(Model model){
+        return "main";
+    }
+
     @GetMapping("/basket")
     public String getBasket(Model model) {
         model.addAttribute("sum_price", this.productService.sumPrice());
-        model.addAttribute("basket_products", this.productService.getBasketItems());
-        return "basket_products";
+        model.addAttribute("basket", this.productService.getBasketItems());
+        return "basket";
     }
 
-    @GetMapping("/product-list")
+    @GetMapping("/products")
     public String getProduct(Model model) {
-        //wypisanie produktow w stringu na stronie
-        model.addAttribute("products", this.productService.getProducts());
+        model.addAttribute("getproducts", this.productService.getProducts());
         return "products";
     }
 
-    @RequestMapping(value = "/basket/add/{productId}")
-    public String addProduct(@PathVariable Integer productId) {
+    @GetMapping("/basket/add/{productId}")
+    public String addProduct(@PathVariable Long productId) {
+        System.out.println("== TEST ==");
+        System.out.println(productId);
         productService.addProductToBasket(productId);
         return "main";
     }

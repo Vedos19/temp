@@ -1,22 +1,33 @@
 package com.example.demo1.model;
 
-public class Product {
-    private String name, type;
-    private double price;
-    private int id, amount;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-    public Product(int id, int amount, double price, String name, String type) {
-        this.id = id;
-        this.amount = amount;
-        this.price = price;
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private int quantity;
+    private double price;
+    private String name;
+    private String type;
+
+    public Product(String name, String type, double price, int quantity) {
         this.name = name;
         this.type = type;
+        this.price = price;
+        this.quantity = quantity;
     }
+
+    public Product(){}
 
     //kopia do koszyka
     public Product(Product product){
         this.id = product.id;
-        this.amount = 1;
+        this.quantity = 1;
         this.price = product.price;
         this.name = product.name;
         this.type = product.type;
@@ -25,11 +36,11 @@ public class Product {
     @Override
     public String toString() {
         return "id - " + id + " | nazwa - " + name +
-                " | " + price + "zł | ilość - " + amount + '}';
+                " | " + price + "zł | ilość - " + quantity + '}';
     }
 
-    public void addAmount(){
-        this.amount++;
+    public void addQuantity(){
+        this.quantity++;
     }
 
     public String getName() {
@@ -41,11 +52,11 @@ public class Product {
     public double getPrice() {
         return price;
     }
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public int getAmount() {
-        return amount;
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setName(String name) {
@@ -57,10 +68,10 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
