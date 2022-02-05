@@ -26,10 +26,18 @@ public class ProductService implements IProductService {
 
     public void addProductToBasket(Long productId) {
         Product product = productRepository.getById(productId);
-        //del
-        System.out.println(product);
-        basket.addProduct(product);
-        product.setQuantity(product.getQuantity() - 1);
+
+        if(product.getQuantity() > 0){
+            Product product1 = new Product();
+                product1.setId(product.getId());
+                product1.setName(product.getName());
+                product1.setType(product.getType());
+                product1.setPrice(product.getPrice());
+                product1.setQuantity(1);
+            basket.addProduct(product1);
+            product.setQuantity(product.getQuantity() - 1);
+            productRepository.save(product);
+        }
     }
 
     public double sumPrice(){

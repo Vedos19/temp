@@ -17,19 +17,19 @@ public class Basket {
     }
 
     private boolean checkIfProductIsOnListByName(String productName){
-        return basket_products.stream()
-                .anyMatch(product -> product
-                        .getName()
-                        .equals(productName));
+        for(Product product : basket_products){
+            if(product.getName().equals(productName)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void addProduct(Product product){
         if(!checkIfProductIsOnListByName(product.getName())) {
-            Product product1 = new Product(product);
-            this.basket_products.add(product1);
+            this.basket_products.add(product);
         }
         else{
-            //utworzenie drugiego obiektu - problem z referencjami
             Product product2 = basket_products.stream()
                     .filter(product1 -> product1.getName()
                             .equals(product.getName()))

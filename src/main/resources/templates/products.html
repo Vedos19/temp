@@ -16,7 +16,7 @@
     <div id="content">
         <div th:id="${product.id}" th:each="product : ${getproducts}" class="product">
             <br>
-            <div th:text="${product.id}" class="name"></div>
+            <div th:text=" 'Produkt: ' + ${product.name}" class="name"></div>
             <div th:text=" 'Cena: ' + ${product.price}+zł" class="price"></div>
             <div th:text=" 'Ilość: ' + ${product.quantity}" class="quantity"></div>
             <a th:href="@{basket/add/{id}(id=${product.id})}">Dodaj do koszyka</a>

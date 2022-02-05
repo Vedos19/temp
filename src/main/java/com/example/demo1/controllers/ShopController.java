@@ -38,10 +38,9 @@ public class ShopController {
 
     @GetMapping("/basket/add/{productId}")
     public String addProduct(@PathVariable Long productId) {
-        System.out.println("== TEST ==");
         System.out.println(productId);
         productService.addProductToBasket(productId);
-        return "main";
+        return "redirect:/shop/products";
     }
 
     @RequestMapping(value = "/basket/sum")

@@ -23,11 +23,11 @@ public class Demo1Application {
 	}
 
 	public void insertProducts(IProductRepository productRepository) {
-		productRepository.save(new Product("Żółw żółtolicy","zwierzę", 20,70));
-		productRepository.save(new Product("Żółw grecki","zwierzę", 20,120));
-		productRepository.save(new Product("Bojownik","zwierzę",20,30));
-		productRepository.save(new Product("Karma dla żółwi","karma",420,10));
-		productRepository.save(new Product("Karma dla rybek","karma",20,10));
-		productRepository.save(new Product("Karma dla kotów","karma",20,10));
+		productRepository.save(new Product("Żółw żółtolicy","zwierzę", 80,8));
+		productRepository.save(new Product("Żółw grecki","zwierzę", 300,3));
+		productRepository.save(new Product("Bojownik","zwierzę",30,20));
+		productRepository.save(new Product("Karma dla żółwi","karma",20,50));
+		productRepository.save(new Product("Karma dla rybek","karma",20,50));
+		productRepository.save(new Product("Karma dla kotów","karma",20,50));
 	}
 }
