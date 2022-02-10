@@ -29,7 +29,7 @@ public class DB {
         products.add(new Product("Karma dla rybek","karma",20,10));
         products.add(new Product("Karma dla kotów","karma",20,10));
 
-        users.add(new User(1L, "Marek", "Szot", "admin", "admin"));
+        users.add(new User(1L, "Wiktor", "Pompka", "admin", "admin"));
     }
 
     public Optional<User> getUserByLogin(String login) {

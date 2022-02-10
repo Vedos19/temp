@@ -23,9 +23,9 @@ public class Demo1Application {
 	}
 
 	public void insertProducts(IProductRepository productRepository) {
-		productRepository.save(new Product("Żółw żółtolicy","zwierzę", 80,8));
-		productRepository.save(new Product("Żółw grecki","zwierzę", 300,3));
-		productRepository.save(new Product("Bojownik","zwierzę",30,20));
+		productRepository.save(new Product("Żółw żółtolicy","zolwik", 80,8));
+		productRepository.save(new Product("Żółw grecki","zolwik", 300,3));
+		productRepository.save(new Product("Bojownik","rybka",30,20));
 		productRepository.save(new Product("Karma dla żółwi","karma",20,50));
 		productRepository.save(new Product("Karma dla rybek","karma",20,50));
 		productRepository.save(new Product("Karma dla kotów","karma",20,50));
